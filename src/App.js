@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Home/Home';
+import Form from './Home/Form';
 
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
       <BrowserRouter>
       <Routes>
       <Route path='/' element={<Home/>} />
+      <Route path='/register' element={<Form/>} />
         </Routes>
   </BrowserRouter>
     </div>
