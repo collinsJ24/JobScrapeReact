@@ -5,9 +5,8 @@ import "./Select.scss";
 const Demo = () => {
   // States for registration
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const options = [
+    { value: "Select All", label: "All" },
     { value: "Indeed", label: "Indeed" },
     { value: "Reed", label: "Reed" },
     { value: "Linkedin", label: "Linkedin" },
@@ -53,25 +52,29 @@ const Demo = () => {
   };
 
   // Handling the email change
-  const handleChange = (selectedOption) => {
-    setSelectedOption(selectedOption);
-    console.log("Selected Options: ", selectedOption)
+  const handleChange = (event) => {
+    setSelectedOption(event);
+    console.log("Selected Options: ", event)
   }
 
-  // Handling the password change
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-    setSubmitted(false);
-  };
-
   // Handling the form submission
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ jobKeywords: name, jobSitesToScrape: selectedOption.map(val => (val.value))})
+};
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name === "" || email === "" || password === "") {
+    if (name === "") {
       setError(true);
     } else {
       setSubmitted(true);
       setError(false);
+      console.log(requestOptions);
+      fetch('http://localhost:8080/api/scraper/job_keywords', requestOptions)
+        .then(response => response.json())
+        .then();
     }
   };
   return (
@@ -114,6 +117,7 @@ const Demo = () => {
                   />
 
                   <button
+                  style={{"margin-top": '30px'}}
                     onClick={handleSubmit}
                     className="button is-primary"
                     type="submit"
