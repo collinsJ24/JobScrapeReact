@@ -18,7 +18,7 @@ const Home = () => {
 
           <div className="ctas">
             <div className="cta-btns">
-              <a href="/register" className="button is-warning hero-cta">
+              <a href="/authentication/sign-up" className="button is-warning hero-cta">
                 CREATE YOUR FREE ACCOUNT
               </a>
             </div>
@@ -28,7 +28,7 @@ const Home = () => {
         <div className="right">
           <img
             className="hero-img show-image"
-            src={require("./imageedit_1_9325712644.png")}
+            src={require("./imageedit_1_9325712644.png").default}
           />
         </div>
       </div>
@@ -46,14 +46,7 @@ const Home = () => {
                   Just type in the job title / keywords, select which job sites
                   you want searched, and we'll email you when it's done.
                 </div>
-                <div className="w-layout-grid button-wrapper top-padding">
-                  <a href="/accounts/signup/?" className="button outline w-button">
-                    Sign Up
-                  </a>
-                  <a href="/accounts/login/?" className="button white w-button">
-                    Login
-                  </a>
-                </div>
+                
               </div>
             </div>
           </div>

@@ -54,7 +54,6 @@ const Demo = () => {
   // Handling the email change
   const handleChange = (event) => {
     setSelectedOption(event);
-    console.log("Selected Options: ", event)
   }
 
   // Handling the form submission
@@ -71,7 +70,6 @@ const Demo = () => {
     } else {
       setSubmitted(true);
       setError(false);
-      console.log(requestOptions);
       fetch('http://localhost:8080/api/scraper/job_keywords', requestOptions)
         .then(response => response.json())
         .then();
