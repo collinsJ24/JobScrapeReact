@@ -48,7 +48,7 @@ const handlePassword = (e) => {
 };
 
   const handleSubmit = () => {
-    localStorage.setItem('user', email);
+    localStorage.setItem('user', email)
       fetch("http://localhost:8080/api/auth/signup/", requestOptions)
         .then((response) => response.json())
         .then(setSuccess(true)
@@ -116,7 +116,7 @@ const handlePassword = (e) => {
               <div className="text-center">
                 <button
                   onClick={handleSubmit}
-                  className="btn btn-primary my-4"
+                  className="button-7"
                   variant="gradient"
                   color="info"
                   fullWidth
