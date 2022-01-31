@@ -1,6 +1,5 @@
 import Select, { components } from "react-select";
 import { useState } from "react";
-import "./Select.scss";
 
 const Demo = () => {
   // States for registration
@@ -16,8 +15,8 @@ const Demo = () => {
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
-      borderBottom: '1px dotted pink',
-      color: state.isSelected ? 'red' : 'blue',
+      borderBottom: "1px dotted pink",
+      color: state.isSelected ? "red" : "blue",
       padding: 0,
     }),
     control: () => ({
@@ -26,11 +25,11 @@ const Demo = () => {
     }),
     singleValue: (provided, state) => {
       const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-  
+      const transition = "opacity 300ms";
+
       return { ...provided, opacity, transition };
-    }
-  }
+    },
+  };
 
   const MultiValueRemove = (props) => {
     if (props.data.isFixed) {
@@ -54,14 +53,17 @@ const Demo = () => {
   // Handling the email change
   const handleChange = (event) => {
     setSelectedOption(event);
-  }
+  };
 
   // Handling the form submission
   const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ jobKeywords: name, jobSitesToScrape: selectedOption.map(val => (val.value))})
-};
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      jobKeywords: name,
+      jobSitesToScrape: selectedOption.map((val) => val.value),
+    }),
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,62 +72,38 @@ const Demo = () => {
     } else {
       setSubmitted(true);
       setError(false);
-      fetch('http://localhost:8080/api/scraper/job_keywords', requestOptions)
-        .then(response => response.json())
+      fetch("http://localhost:8080/api/scraper/job_keywords", requestOptions)
+        .then((response) => response.json())
         .then();
     }
   };
   return (
-    <div style={{ "background-color": "#188EF5" }}>
-      <div className="container">
-        <div className="columns is-centered">
-          <div
-            className="column is-6"
-            style={{
-              "text-align": "center",
-              "background-color": "#fff",
-              "min-height": "570px",
-              "border-radius": "5px",
-              "box-shadow": "0 8px 0 rgba(0, 0, 0, 0.2)",
-              "margin-top": "60px",
-            }}
-          >
-            <div className="columns is-centered">
-              <div
-                className="column is-10"
-                style={{ "text-align": "left", "margin-top": "20px" }}
-              >
-                <form className="form-horizontal">
-                  {/* Labels and inputs for form data */}
-                  <label className="label">Job Keywords</label>
-                  <input
-                    onChange={handleName}
-                    className="input form-control"
-                    value={name}
-                    type="text"
-                  />
+    <div>
+      <div className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-xp0xlr-MuiPaper-root-MuiCard-root">
+        <div className="column is-10" style={{ "text-align": "left", "margin-top": "20px" }}>
+          <form className="form-horizontal">
+            {/* Labels and inputs for form data */}
+            <label className="label">Job Keywords</label>
+            <input onChange={handleName} className="input form-control" value={name} type="text" />
 
-                  <label className="label">Job Sites To Scrape</label>
-                  <Select                
-                    isMulti
-                    onChange={handleChange}
-                    isClearable={false}
-                    options={options}
-                    components={{ MultiValueRemove }}
-                  />
+            <label className="label">Job Sites To Scrape</label>
+            <Select
+              isMulti
+              onChange={handleChange}
+              isClearable={false}
+              options={options}
+              components={{ MultiValueRemove }}
+            />
 
-                  <button
-                  style={{"margin-top": '30px'}}
-                    onClick={handleSubmit}
-                    className="button is-primary"
-                    type="submit"
-                  >
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
+            <button
+              style={{ "margin-top": "30px" }}
+              onClick={handleSubmit}
+              className="button-7"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     </div>

@@ -7947,7 +7947,6 @@ label.panel-block:hover {
   .columns:not(.is-desktop) {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
   }
 }
 @media screen and (min-width: 1024px) {
