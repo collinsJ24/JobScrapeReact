@@ -14,7 +14,7 @@ import Home from "Home/Home";
 
 const routes = [
   {
-    type: "collapse",
+    type: "collapsed",
     name: "Home",
     key: "home",
     icon: <Icon fontSize="small">home</Icon>,
@@ -22,7 +22,7 @@ const routes = [
     component: <Home />,
   },
   {
-    type: "collapse",
+    type: "collapsed",
     name: "Dashboard",
     key: "dashboard",
     icon: <Icon fontSize="small">dashboard</Icon>,
@@ -30,15 +30,15 @@ const routes = [
     component: <Dashboard />,
   },
   {
-    type: "collapse",
-    name: "Tables",
+    type: "collapsed",
+    name: "Scraping Results",
     key: "tables",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/tables",
     component: <Tables />,
   },
   {
-    type: "collapse",
+    type: "collapsed",
     name: "Billing",
     key: "billing",
     icon: <Icon fontSize="small">receipt_long</Icon>,
@@ -46,23 +46,7 @@ const routes = [
     component: <Billing />,
   },
   {
-    type: "collapse",
-    name: "RTL",
-    key: "rtl",
-    icon: <Icon fontSize="small">format_textdirection_r_to_l</Icon>,
-    route: "/rtl",
-    component: <RTL />,
-  },
-  {
-    type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
-  },
-  {
-    type: "collapse",
+    type: "collapsed",
     name: "Profile",
     key: "profile",
     icon: <Icon fontSize="small">person</Icon>,
@@ -70,7 +54,7 @@ const routes = [
     component: <Profile />,
   },
   {
-    type: "collapse",
+    type: "collapsed",
     name: "Sign In",
     key: "sign-in",
     icon: <Icon fontSize="small">login</Icon>,
@@ -78,7 +62,7 @@ const routes = [
     component: <SignIn />,
   },
   {
-    type: "collapse",
+    type: "collapsed",
     name: "Sign Up",
     key: "sign-up",
     icon: <Icon fontSize="small">assignment</Icon>,

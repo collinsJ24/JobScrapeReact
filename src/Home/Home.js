@@ -7,8 +7,8 @@ const Home = () => {
         <div className="left">
           <a href="/" className="brand">JobScraper</a>
           <a href="/pricing"className="brand2">Pricing</a>
-          <a href="/login" className="brand3">Login</a>
-          <a href="/demo" className="brand3"> Demo </a>
+          <a href="/authentication/sign-in" className="brand3">Login</a>
+          <a href="/dashboard" className="brand3"> Demo </a>
           <div className="brand-title">
             Have you got a Job Board which you have to manually populate with jobs ?
           </div>

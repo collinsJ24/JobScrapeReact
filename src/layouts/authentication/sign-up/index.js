@@ -1,6 +1,7 @@
-
+import "Login.css";
+import { useState } from "react";
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -19,6 +20,41 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
 
 function Cover() {
+
+   //For Job Site dropdown
+   const [selectedOption, setSelectedOption] = useState([]);
+   const [name, setName] = useState("");
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+   const [success, setSuccess] = useState(false);
+   // Handling the form submission
+   const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: name, email: email, password: password})
+};
+
+// Handling the name change
+const handleName = (e) => {
+  setName(e.target.value);
+};
+
+const handleEmail = (e) => {
+  setEmail(e.target.value);
+};
+
+const handlePassword = (e) => {
+  setPassword(e.target.value);
+};
+
+  const handleSubmit = () => {
+    localStorage.setItem('user', email);
+      fetch("http://localhost:8080/api/auth/signup/", requestOptions)
+        .then((response) => response.json())
+        .then(setSuccess(true)
+        );
+  };
+
   return (
     <CoverLayout image={bgImage}>
       <Card>
@@ -43,39 +79,51 @@ function Cover() {
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
             <MDBox mb={2}>
-              <MDInput type="text" label="Name" variant="standard" fullWidth />
+              <input
+                placeholder="Name"
+                onChange={handleName}
+                className="input form-control"
+                type="text"
+                label="name"
+                variant="standard"
+                fullWidth
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" variant="standard" fullWidth />
+              <input
+                placeholder="Email"
+                onChange={handleEmail}
+                className="input form-control"
+                type="text"
+                label="email"
+                variant="standard"
+                fullWidth
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" variant="standard" fullWidth />
+              <input
+                placeholder="Password"
+                onChange={handlePassword}
+                type="password"
+                className="input form-control"
+                label="password"
+                variant="standard"
+                fullWidth
+              />
             </MDBox>
-            <MDBox display="flex" alignItems="center" ml={-1}>
-              <Checkbox />
-              <MDTypography
-                variant="button"
-                fontWeight="regular"
-                color="text"
-                sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
-              >
-                &nbsp;&nbsp;I agree the&nbsp;
-              </MDTypography>
-              <MDTypography
-                component="a"
-                href="#"
-                variant="button"
-                fontWeight="bold"
-                color="info"
-                textGradient
-              >
-                Terms and Conditions
-              </MDTypography>
-            </MDBox>
+
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
-                sign in
-              </MDButton>
+              <div className="text-center">
+                <button
+                  onClick={handleSubmit}
+                  className="btn btn-primary my-4"
+                  variant="gradient"
+                  color="info"
+                  fullWidth
+                >
+                  Sign Up
+                </button>
+              </div>
             </MDBox>
             <MDBox mt={3} mb={1} textAlign="center">
               <MDTypography variant="button" color="text">
@@ -95,6 +143,7 @@ function Cover() {
           </MDBox>
         </MDBox>
       </Card>
+      {success && <Navigate to="/dashboard"/>}
     </CoverLayout>
   );
 }

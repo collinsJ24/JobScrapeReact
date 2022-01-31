@@ -97,6 +97,16 @@ export default function App() {
 
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
+      const loggedInUser = localStorage.getItem("user");
+      console.log(loggedInUser);
+      if (loggedInUser) {
+        if(route.name != "Home"){
+          route.type = "collapse";
+        }
+        else{
+          route.type = "collapsed";
+        }
+      }
       if (route.collapse) {
         return getRoutes(route.collapse);
       }
@@ -152,7 +162,7 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes)}
-          <Route path="*" element={<Navigate to="/dashboard" />} />
+          <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       </ThemeProvider>
     </CacheProvider>

@@ -3351,7 +3351,9 @@ fieldset:disabled a.btn
 {
     color: #fff;
     border-color: #5e72e4;
-    background-color: #5e72e4;
+    background: linear-gradient(
+195deg
+, #49a3f1, #1A73E8);
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
 .btn-primary:hover
@@ -18395,7 +18397,7 @@ a.text-darker:focus
 .btn
 {
     font-size: .875rem;
-
+    width: 60%;
     position: relative;
 
     transition: all .15s ease;
