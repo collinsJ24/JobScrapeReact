@@ -20,6 +20,7 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import Demo from "Home/Demo";
+import Header from "layouts/profile/components/Header";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
@@ -27,6 +28,7 @@ function Dashboard() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
+      <Header>
       <MDBox py={3}>
         <MDBox mt={4.5}></MDBox>
         <MDBox>
@@ -41,6 +43,7 @@ function Dashboard() {
         </MDBox>
       </MDBox>
       <Footer />
+      </Header>
     </DashboardLayout>
   );
 }
